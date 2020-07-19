@@ -17,45 +17,32 @@
     <script>
       //判断是否支持触摸
       let isTouchDevice = "ontouchstart" in document.documentElement;
+      console.log(isTouchDevice);
       //获取和创建画布
       let canvas = document.querySelector("#canvas");
       let ctx = canvas.getContext("2d");
       //获取当前可视区得宽度高度
       canvas.width = document.documentElement.clientWidth;
       canvas.height = document.documentElement.clientHeight;
-      ctx.lineCap = "round";
+      ctx.fillStyle = "blue";
       let painting = false;
-      function drawLine(x1, y1, x2, y2) {
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.stroke();
-      }
       if (isTouchDevice) {
-        canvas.ontouchstart = (e) => {
+        canvas.ontouchmove = (e) => {
           let x = e.touches[0].clientX;
           let y = e.touches[0].clientY;
-          last = [x, y];
-        };
-        canvas.ontouchmove = (e) => {
-          drawLine(
-            last[0],
-            last[1],
-            e.touches[0].clientX,
-            e.touches[0].clientY
-          );
-          last = [e.touches[0].clientX, e.touches[0].clientY];
+          ctx.beginPath();
+          ctx.arc(x, y, 10, 0, 2 * Math.PI);
+          ctx.stroken();
+          ctx.fill();
           //ctx.fillRect(clientX)
         };
       } else {
-        canvas.onmousedown = (e) => {
+        canvas.onmousedown = () => {
           painting = true;
-          last = [e.clientX, e.clientY];
         };
         canvas.onmousemove = (e) => {
           if (painting === true) {
-            drawLine(last[0], last[1], e.clientX, e.clientY);
-            last = [e.clientX, e.clientY];
+            ctx.fillRect(e.clientX - 5, e.clientY - 5, 10, 10);
           } else {
           }
         };

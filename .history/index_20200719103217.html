@@ -23,6 +23,7 @@
       //获取当前可视区得宽度高度
       canvas.width = document.documentElement.clientWidth;
       canvas.height = document.documentElement.clientHeight;
+      ctx.fillStyle = "blue";
       ctx.lineCap = "round";
       let painting = false;
       function drawLine(x1, y1, x2, y2) {
@@ -44,7 +45,7 @@
             e.touches[0].clientX,
             e.touches[0].clientY
           );
-          last = [e.touches[0].clientX, e.touches[0].clientY];
+          last[(e.touches.clientX, e.touches.clientY)];
           //ctx.fillRect(clientX)
         };
       } else {

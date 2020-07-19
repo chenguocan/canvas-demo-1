@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      //判断是否支持触摸
+      let isTouchDevice = "ontouchstart" in document.documentElement;
+      //获取和创建画布
+      let canvas = document.querySelector("#canvas");
+      let ctx = canvas.getContext("2d");
+      //获取当前可视区得宽度高度
+      canvas.width = document.documentElement.clientWidth;
+      canvas.height = document.documentElement.clientHeight;
+      ctx.fillStyle = "blue";
+      let painting = false;
+      // if (isTouchDevice) {
+      //   canvas.ontouchmove = (e) => {
+      //     let x = e.touches[0].clientX;
+      //     let y = e.touches[0].clientY;
+      //     ctx.beginPath();
+      //     ctx.arc(x, y, 10, 0, 2 * Math.PI);
+      //     ctx.stroke();
+      //     ctx.fill();
+      //     //ctx.fillRect(clientX)
+      //   };
+      // } else {
+      //   canvas.onmousedown = () => {
+      //     painting = true;
+      //   };
+      //   canvas.onmousemove = (e) => {
+      //     if (painting === true) {
+      //       ctx.fillRect(e.clientX - 5, e.clientY - 5, 10, 10);
+      //     } else {
+      //     }
+      //   };
+      //   canvas.onmouseup = () => {
+      //     painting = false;
+      //   };
+      // }
+    </script>
+  </body>
+</html>
